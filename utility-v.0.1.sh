@@ -11,7 +11,6 @@
 # then you can leave this line alone
 USR=username
 
-
 reset
 
 NGALAN="Fancy Updater Utility v.0.1"
