@@ -22,7 +22,6 @@ if [ -f $UTILITY ]; then
 		--gauge "\nInstalling script. Please wait..." 8 70 0
 
 	if [ -f $BASHRC ]; then
-
 		# Append an alias for the updater in the .bashrc file
 		echo "alias $TRIGGER='sudo ./.ub_updater.sh'" >> $BASHRC
 	else
