@@ -2,13 +2,25 @@
 
 # install.sh - Install Fancy Updater Utility in the home directory
 
+# Let's just clear the way
 clear
-TRIGGER=sysupdate
-APPNAME="Fancy-Updater-Utility"
-BASHRC=/home/$USER/.bashrc
-UTILITY=/home/$USER/$APPNAME/utility-v.0.1.sh
-ACTIVE=/home/$USER/.utility-v.0.1.sh
 
+# The command (alias) the user will be typing in the console to 
+# trigger the utility
+TRIGGER="sysupdate"
+
+# The name of the utility
+APPNAME="Fancy-Updater-Utility"
+
+# The name of the actual bash script
+SCRIPTNAME="utility-v.0.1.sh"
+
+# Some directories
+BASHRC=/home/$USER/.bashrc
+UTILITY=/home/$USER/$APPNAME/$SCRIPTNAME
+ACTIVE=/home/$USER/.$SCRIPTNAME
+
+# Let the games begin, I mean the installation :)
 if [ -f $UTILITY ]; then
 	# Make updater hidden and executable
 	( if cp $UTILITY $ACTIVE &>/dev/null; then
@@ -23,10 +35,10 @@ if [ -f $UTILITY ]; then
 
 	if [ -f $BASHRC ]; then
 		# Append an alias for the updater in the .bashrc file
-		echo "alias $TRIGGER='sudo ./.ub_updater.sh'" >> $BASHRC
+		echo "alias $TRIGGER='sudo ./.$SCRIPTNAME'" >> $BASHRC
 	else
 		touch $BASHRC
-		echo "alias $TRIGGER='sudo ./.ub_updater.sh'" >> $BASHRC
+		echo "alias $TRIGGER='sudo ./.$SCRIPTNAME'" >> $BASHRC
 	fi
 
 	# Configure active installation
@@ -44,6 +56,7 @@ if [ -f $UTILITY ]; then
 			$ sysupdate\n\n \
 			This utility will take care all the updating for your." 13 70
 else
+	# Just in case something happened...
 	dialog --backtitle "FANCY UPDATER UTILITY" --title "" \
 		--msgbox "\nOoops, unable to locate utility script." 7 70
 	reset
