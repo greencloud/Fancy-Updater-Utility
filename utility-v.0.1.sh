@@ -29,7 +29,7 @@ function updater() {
 	TEMP=/home/$USR/.uutf1
 	if [[ -d $SEDIR && -f $SEENF ]]; then
 		if [ -f $TEMP ]; then
-			rm -f $TEMP &>/dev/null
+			/bin/rm -f $TEMP &>/dev/null
 		fi
 		# If there SELinux and enforcing is 1, set it to 0 temporarily
 		if [ $(getenforce) == 'Enforcing' ]; then
