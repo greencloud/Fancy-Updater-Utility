@@ -16,11 +16,6 @@ reset
 
 NGALAN="Fancy Updater Utility v.0.1"
 
-function networktest() {
-	# Check whether there is a stable connection before performing updates
-	echo $(date)
-}
-
 function updater() {
 	# Take care SELinux if it's active
 	TLUPD="SYSTEM UPDATE"
